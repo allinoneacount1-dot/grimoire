@@ -227,23 +227,25 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-void">
       {/* Nav */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-6 transition-all duration-300 ${scrolled ? 'bg-void/95 backdrop-blur-sm border-b border-border-subtle' : 'bg-transparent'}`}>
-        <div className="flex items-center gap-2">
-          <span className="font-display text-xl font-semibold text-gold-bright tracking-tight">GRIMOIRE</span>
+      <nav className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-center px-6 transition-all duration-300 ${scrolled ? 'bg-void/95 backdrop-blur-sm border-b border-border-subtle' : 'bg-transparent'}`}>
+        <div className="w-full max-w-6xl flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="font-display text-xl font-semibold text-gold-bright tracking-tight">GRIMOIRE</span>
+          </div>
+          <Link
+            to="/terminal"
+            className="inline-flex items-center gap-2 rounded-sm bg-gold-bright px-5 py-2 text-sm font-medium text-void hover:bg-gold-dim transition-colors"
+          >
+            Enter Terminal
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-        <Link
-          to="/terminal"
-          className="inline-flex items-center gap-2 rounded-sm bg-gold-bright px-5 py-2 text-sm font-medium text-void hover:bg-gold-dim transition-colors"
-        >
-          Enter Terminal
-          <ArrowRight className="h-4 w-4" />
-        </Link>
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center pt-14">
+      <section className="relative min-h-screen flex items-center justify-center pt-14">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute right-[15%] top-[20%] w-[600px] h-[600px] rounded-full bg-gold-bright/[0.03] blur-[120px]" />
+          <div className="absolute left-1/2 top-[30%] -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold-bright/[0.03] blur-[120px]" />
           <div
             className="absolute inset-0 opacity-[0.02]"
             style={{
@@ -254,7 +256,7 @@ export default function Landing() {
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 items-center">
-          <div>
+          <div className="text-center lg:text-left">
             <div className="mb-6 inline-block rounded-sm border border-dim px-3 py-1">
               <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold-dim">Intelligence Terminal</span>
             </div>
@@ -271,12 +273,12 @@ export default function Landing() {
               </span>
             </h1>
 
-            <p className="mb-10 max-w-md font-body text-lg text-muted leading-relaxed animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <p className="mb-10 max-w-md mx-auto lg:mx-0 font-body text-lg text-muted leading-relaxed animate-fade-in" style={{ animationDelay: '300ms' }}>
               GRIMOIRE deciphers the on-chain language of markets in real-time.
               Pattern detection. Signal generation. Predictive intelligence.
             </p>
 
-            <div className="flex items-center gap-4 mb-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
+            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
               <Link
                 to="/terminal"
                 className="inline-flex items-center gap-2 rounded-sm bg-gold-bright px-7 py-3 text-sm font-medium text-void hover:bg-gold-dim transition-all hover:-translate-y-0.5"
@@ -289,7 +291,7 @@ export default function Landing() {
               </a>
             </div>
 
-            <div className="flex items-center gap-6 animate-fade-in" style={{ animationDelay: '500ms' }}>
+            <div className="flex items-center justify-center lg:justify-start gap-6 animate-fade-in" style={{ animationDelay: '500ms' }}>
               <div className="flex items-center gap-2 border-r border-border-dim pr-6">
                 <span className="font-mono text-xl font-bold text-gold-bright">
                   <StatValue value={142} prefix="$" suffix="B" />
@@ -311,8 +313,8 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Right column — mini chart placeholder */}
-          <div className="rounded-md border border-border-dim bg-surface p-1">
+          {/* Right column — mini chart */}
+          <div className="rounded-md border border-border-dim bg-surface p-1 mx-auto w-full max-w-md">
             <div className="rounded-sm bg-void p-4">
               <div className="flex items-center justify-between mb-4">
                 <span className="font-mono text-xs text-muted">SOL/USD · 24h</span>
@@ -345,13 +347,13 @@ export default function Landing() {
             Most traders read headlines. <span className="italic text-gold-bright">You will read the manuscript.</span>
           </p>
           <div className="w-20 h-px bg-border-dim mx-auto mb-8" />
-          <div className="space-y-6 text-left">
+          <div className="space-y-6">
             {[
               'Every token launch is a ritual. Every wallet cluster is a coven. Every volume spike is an incantation beginning.',
               'Most traders see candles. GRIMOIRE reads the spell. The market writes in a language of patterns — wallet accumulation behaviors, liquidity signatures, social velocity vectors, on-chain forensic tells.',
               'GRIMOIRE\'s AI engine deciphers this language in real-time and surfaces actionable intelligence before consensus forms.',
             ].map((text, i) => (
-              <p key={i} className="font-body text-base text-muted leading-[1.8]">
+              <p key={i} className="font-body text-base text-muted leading-[1.8] text-center">
                 <span className="text-gold-dim mr-2">◈</span>
                 {text}
               </p>
@@ -396,7 +398,7 @@ export default function Landing() {
               { sigil: '◎', title: 'Signal Grading', desc: 'Each pattern match is graded S through C based on historical confidence, current volume, and wallet signature quality.' },
               { sigil: '◈', title: 'Oracle Interpretation', desc: 'Query the Oracle in plain language. It synthesizes the pattern stack and returns intelligence, not noise.' },
             ].map((step, i) => (
-              <div key={i} className="flex gap-6 border-l-2 border-border-dim pl-6 hover:border-gold-bright transition-colors">
+              <div key={i} className="flex gap-6 border-l-2 border-border-dim pl-6 hover:border-gold-bright transition-colors max-w-2xl mx-auto">
                 <span className="text-2xl text-gold-dim">{step.sigil}</span>
                 <div>
                   <h3 className="font-display text-xl font-semibold text-parchment mb-2">{step.title}</h3>
@@ -437,7 +439,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="py-5 border-t border-border-subtle bg-deep">
-        <div className="mx-auto max-w-6xl px-6 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl px-6 flex items-center justify-center justify-between">
           <span className="text-xs text-muted">GRIMOIRE © 2026</span>
           <div className="flex items-center gap-6">
             {['GitHub', 'Twitter', 'Docs'].map((link) => (
