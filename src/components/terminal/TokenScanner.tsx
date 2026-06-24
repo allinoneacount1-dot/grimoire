@@ -35,7 +35,7 @@ export default function TokenScanner() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-5xl mx-auto space-y-6">
       {/* Search Input */}
       <div className="rounded-md border border-border-dim bg-surface overflow-hidden">
         <input
@@ -49,7 +49,7 @@ export default function TokenScanner() {
 
       {/* Recent searches */}
       {recentSearches.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {recentSearches.slice(0, 5).map((s) => (
             <button
               key={s}
@@ -64,9 +64,9 @@ export default function TokenScanner() {
 
       {/* Trending chips */}
       {!scannedToken && (
-        <div>
+        <div className="text-center">
           <h3 className="font-mono text-xs uppercase tracking-wider text-muted mb-3">Currently Trending</h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {(trending || []).slice(0, 8).map((token: Token) => (
               <button
                 key={token.address}

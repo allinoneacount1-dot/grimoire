@@ -6,7 +6,7 @@ export default function NewsIntel() {
   const { news } = useGrimoireStore();
 
   return (
-    <div className="space-y-4">
+    <div className="max-w-4xl mx-auto space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="font-display text-xl font-semibold text-parchment">News Intelligence</h2>
         <span className="font-mono text-xs text-muted">{news.length} articles</span>
@@ -38,7 +38,7 @@ export default function NewsIntel() {
               {item.title}
             </p>
             {item.currencies.length > 0 && (
-              <div className="flex gap-1.5 mt-2">
+              <div className="flex justify-center gap-1.5 mt-2">
                 {item.currencies.map((c) => (
                   <span key={c} className="rounded-sm bg-elevated px-1.5 py-0.5 font-mono text-[10px] text-muted">{c}</span>
                 ))}

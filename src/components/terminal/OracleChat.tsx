@@ -32,7 +32,6 @@ export default function OracleChat() {
     setInput('');
     setOracleLoading(true);
 
-    // Simulate AI response (replace with actual Groq API call)
     setTimeout(() => {
       const oracleMsg: Message = {
         id: `oracle_${Date.now()}`,
@@ -46,10 +45,10 @@ export default function OracleChat() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-140px)]">
+    <div className="max-w-4xl mx-auto flex flex-col h-[calc(100vh-140px)]">
       {/* Context bar */}
       {oracleContext && (
-        <div className="rounded-sm border border-border-dim bg-surface px-4 py-2 mb-4 flex items-center gap-2">
+        <div className="rounded-sm border border-border-dim bg-surface px-4 py-2 mb-4 flex items-center justify-center gap-2">
           <span className="text-gold-dim text-xs">◈</span>
           <span className="font-mono text-xs text-muted">Analyzing: ${oracleContext.symbol} — {oracleContext.address.slice(0, 20)}...</span>
         </div>
@@ -68,12 +67,12 @@ export default function OracleChat() {
         {oracleMessages.map((msg) => (
           <div key={msg.id} className={`${msg.role === 'user' ? 'flex justify-end' : ''}`}>
             {msg.role === 'oracle' && (
-              <div className="font-mono text-[10px] text-gold-dim mb-1">◈ GRIMOIRE ORACLE</div>
+              <div className="font-mono text-[10px] text-gold-dim mb-1 text-center">◈ GRIMOIRE ORACLE</div>
             )}
             <div className={`${
               msg.role === 'user'
-                ? 'bg-surface border border-border-dim rounded-sm px-4 py-3 max-w-[80%]'
-                : 'font-display text-base text-parchment leading-[1.8]'
+                ? 'bg-surface border border-border-dim rounded-sm px-4 py-3 max-w-[80%] ml-auto'
+                : 'font-display text-base text-parchment leading-[1.8] text-center'
             }`}>
               {msg.content}
             </div>
@@ -81,7 +80,7 @@ export default function OracleChat() {
         ))}
 
         {oracleLoading && (
-          <div>
+          <div className="text-center">
             <div className="font-mono text-[10px] text-gold-dim mb-1">◈ GRIMOIRE ORACLE</div>
             <span className="font-mono text-sm text-gold-bright animate-pulse-gold">◈ ◈ ◈</span>
           </div>
@@ -92,7 +91,7 @@ export default function OracleChat() {
 
       {/* Suggestion chips */}
       {oracleMessages.length === 0 && (
-        <div className="flex flex-wrap gap-2 mb-3">
+        <div className="flex flex-wrap justify-center gap-2 mb-3">
           {suggestions.map((s) => (
             <button
               key={s}

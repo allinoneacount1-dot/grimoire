@@ -11,7 +11,7 @@ export default function SignalFeed() {
   });
 
   return (
-    <div className="flex gap-6">
+    <div className="max-w-6xl mx-auto flex gap-6">
       <div className="flex-1 space-y-2">
         {filtered.map((signal) => (
           <div

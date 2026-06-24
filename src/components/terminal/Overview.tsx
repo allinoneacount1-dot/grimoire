@@ -14,7 +14,7 @@ function StatCard({ label, value, change, prefix = '', suffix = '' }: {
   suffix?: string;
 }) {
   return (
-    <div className="rounded-md border border-border-subtle bg-surface p-4">
+    <div className="rounded-md border border-border-subtle bg-surface p-4 text-center">
       <div className="text-[11px] text-muted uppercase tracking-wider mb-2">{label}</div>
       <div className="font-mono text-xl font-bold text-parchment">
         {prefix}{formatCompact(value)}{suffix}
@@ -66,7 +66,7 @@ export default function Overview() {
   const solMarketCap = (prices?.solana?.usd || 0) * 440000000;
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6">
       {/* Stats Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <StatCard label="SOL Market Cap" value={solMarketCap} prefix="$" change={formatPercent(prices?.solana?.change24h || 0)} />

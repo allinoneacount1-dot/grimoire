@@ -15,8 +15,8 @@ export default function WalletTracker() {
   };
 
   return (
-    <div className="space-y-6">
-      <h2 className="font-display text-xl font-semibold text-parchment">Wallet Tracker</h2>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <h2 className="font-display text-xl font-semibold text-parchment text-center">Wallet Tracker</h2>
 
       {/* Add wallet */}
       <div className="flex gap-2">
